@@ -20,7 +20,7 @@
 <td> {{ $todo->name }} </td>
 <td> {{ $todo->description }} </td>
 <td> {{ $todo->completed }} </td>
-<td> <a href="todos/{{$todo->id}}" class="btn btn-primary">View</a> </td>
+<td> <a href="{{$todo->id}}" class="btn btn-primary">View</a> </td>
 </tr>
 
 @endforeach
