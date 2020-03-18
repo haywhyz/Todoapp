@@ -1,24 +1,20 @@
-<html>
-<head>
-<title> todo list </title>
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"  crossorigin="anonymous">
+@extends('layout.app')
+@section('content')
 
-</head>
-<body>
-
-<h2 class="text-center">Todo APP todo </h2>
+<h2 class="text-center">View Todo </h2>
 <div class="container-fluid">
-        <div class="text-center my-5">
-                    <div>  {{ $todos->name }} </div>
-                            <div class="card-default">
-                                <div class="card-body col-6">
-                                    <div class="card-title"><h2> title </h2></div>
-                                    {{ $todos->description }}
+                <div class="text-center my-5">
+                    <h5 class="card-title">{{ $todo->name }}</h5>
+                                    <div class="card mt-0">
+                                        <div class="card-body ">
+                                          {{ $todo->description }}
+                                        </div>
+                                    </div>
+                                    <a href="/todos/{{$todo->id}}/edit" class ="btn btn-info mt-2">Edit </a>
+                                    <a href="/todos/{{$todo->id}}/delete" class ="btn btn-danger mt-2">Delete </a>
                                 </div>
-                            </div>
 
-        </div>
+                 </div>
 
 </div>
-</body>
-</html>
+@endsection
