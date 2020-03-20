@@ -1,13 +1,17 @@
 <?php
 
 namespace App\Http\Controllers;
+use Illuminate\Support\Facades\DB;
 use App\Todo;
 use Illuminate\Http\Request;
 
 class TodosController extends Controller
 {
     public function index(){
-        return view('todos.index')->with('todos', Todo::all());
+        // return view('todos.index')->with('todos', Todo::all());
+        $todo = DB::table('todos')->get();
+
+        return view('todos.index', ['todos' => $todo]);
     }
     // public function show($todoId){
     //     return view('todos.show')->with ('todos',  Todo::find($todoId));
@@ -74,6 +78,18 @@ class TodosController extends Controller
         $todo->delete();
         return redirect('/todos');
     }
+
+    public function activate(Todo $todo){
+        $todo->completed = true;
+        $todo->save();
+        session()->flash('success', 'todo completed');
+        return redirect('/todos');
+
+    
+    }
+
+   
+    
 
 
 
